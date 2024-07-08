@@ -1,0 +1,11 @@
+
+<nav>
+    <ul>
+      <li><a routerLink="/get-api" routerLinkActive="active" ariaCurrentWhenActive="page">Api Component</a></li>
+      <li><a routerLink="/form-component" routerLinkActive="active" ariaCurrentWhenActive="page">Form Component</a></li>
+    </ul>
+  </nav>
+  <p>get-api works!</p>
+<button (click)="getAllUser()">click me to load the data</button>
+<P>{{userList |json}}</P>
+
