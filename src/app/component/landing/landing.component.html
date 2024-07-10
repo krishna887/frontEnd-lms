@@ -1,0 +1,30 @@
+<!-- landing-page.component.html -->
+<header>
+    <div class="title">Library Management System</div>
+    <div class="login-container">
+        <button class="login-button" routerLink="/login">Login</button>
+        <div class="dropdown-content">
+            <a (click)="navigateToLogin('librarian')">Login as Librarian</a>
+            <a (click)="navigateToLogin('student')">Login as Student</a>
+        </div>
+    </div>
+</header>
+<main>
+    <div class="content">
+        <img src="/assets/example.jpg" alt="Library Image" class="library-image">
+        <div class="description">
+            <h1>Welcome to the Library Management System</h1>
+            <p>
+                Our Library Management System helps to efficiently manage book collections, track borrowed books,
+                and maintain a record of library members. Whether you're a student or a librarian, our system is designed
+                to simplify the management of library resources and improve the overall library experience.
+            </p>
+            <p>
+                Discover a vast collection of books, manage your borrowings, and stay updated with the latest additions to
+                our library. With user-friendly features and seamless navigation, our system ensures a smooth and
+                hassle-free experience for all users.
+            </p>
+        </div>
+    </div>
+</main>
+<app-footer></app-footer>

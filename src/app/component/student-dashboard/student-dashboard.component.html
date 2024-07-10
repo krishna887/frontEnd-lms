@@ -1,0 +1,23 @@
+<div class="container">
+    <header class="header">
+      <h1>Library Management System</h1>
+    </header>
+    <nav class="menu">
+     
+      <ul>
+        <li><a routerLink="update-student" >Update Student</a></li>
+        <li><a routerLink="books">Books Section</a></li>
+        <li><a routerLink="borrow">Borrow Section</a></li>
+        <li><a routerLink="reservation" >Reservation Section</a></li>
+        <li><a routerLink="fine" >Fine Section</a></li>
+      </ul>
+    </nav>
+    <main class="content">
+      <router-outlet></router-outlet>
+      <!-- Content for each section will go here -->
+    </main>
+   
+      <app-footer></app-footer>
+   
+  </div>
+  
