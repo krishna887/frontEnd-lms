@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
       next: (response: HttpResponse<any>) => {
         const token: any = response.headers.get('Authentication');
         if (token) {
-          localStorage.setItem('Token', token);
+          localStorage.setItem('token', token);
           alert('Login Success');
           const dashboardUrl = this.role === 'librarian' ? '/librarian-dashboard' : '/student-dashboard';
           this.router.navigateByUrl(dashboardUrl);
