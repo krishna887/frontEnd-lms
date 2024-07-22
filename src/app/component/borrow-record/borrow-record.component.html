@@ -26,6 +26,7 @@
                 <th>Is Returned</th>
                 <th>Fine Amount</th>
                 <th>Is Fine Paid</th>
+                <th>Action</th>
                 
             </tr>
         </thead>
@@ -40,6 +41,10 @@
                             <td>{{borrow.returned}}</td>
                             <td>{{borrow.fineAmount}}</td>
                             <td>{{borrow.finePaid}}</td>
+                            <td>
+                                <button class="btn btn-primary btn-sm" [routerLink]="['/librarian-dashboard/edit-borrow',borrow.id]">Edit</button>
+                            </td>
+
                           
 
         </tbody>

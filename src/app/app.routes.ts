@@ -15,7 +15,9 @@ import { ReservationRecordComponent } from './component/reservation-record/reser
 import { BorrowComponent } from './component/borrow/borrow.component';
 import { AddBookComponent } from './component/add-book/add-book.component';
 import { UpdateBookComponent } from './component/update-book/update-book.component';
-import { DeleteBookComponent } from './component/delete-book/delete-book.component';
+import { DeleteReservationsComponent } from './component/delete-reservations/delete-reservations.component';
+import { BorrowEditComponent } from './component/borrow-edit/borrow-edit.component';
+import { EditFineComponent } from './component/edit-fine/edit-fine.component';
 
 export const routes: Routes = [
     {
@@ -36,12 +38,15 @@ export const routes: Routes = [
     { path: 'books-record', component: BookRecordComponent},
     {path:'add-book', component:AddBookComponent},
     {path:'update-book/:id',component:UpdateBookComponent},
-    {path:'delete-book/:id',component:DeleteBookComponent},
+    {path:'delete-reservation/:id',component:DeleteReservationsComponent},
     { path: 'borrow-record', component: BorrowRecordComponent },
     { path: 'reservation-record', component: ReservationRecordComponent },
     { path: 'fine-record', component: FineRecordComponent },
     { path: 'student-dashboard', component: StudentDashboardComponent},
     { path: 'update-student', component: UpdateStudentComponent },
+    {path:'edit-borrow/:id', component:BorrowEditComponent},
+    {path:'edit-fine/:id', component:EditFineComponent}
+
    
 
   ]},
