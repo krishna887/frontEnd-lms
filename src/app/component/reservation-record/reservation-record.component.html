@@ -1,0 +1,48 @@
+<div class="container mt-4">
+    
+    <div class="d-flex justify-content-between mb-3">
+        <h2>Reservation Records</h2>
+        <input 
+            type="text" 
+            class="form-control mr-3" 
+            style="max-width: 300px;"
+            placeholder="Search reserve records..." 
+            [(ngModel)]="searchQuery"
+            (input)="filterReserveRecord()"
+        />
+    </div>
+ <div> 
+   
+    <table class="table table-bordered table-striped">
+        <thead class="thead-dark">
+            <tr>
+                 <th>Id</th>
+                <th>User Id</th>
+                <th>Book Id</th>
+                <th>Reservation Date</th>
+                <th>Is Cancelled</th>
+                <th>Is Active</th> 
+                <th>Action </th>               
+            </tr>
+        </thead>
+        <tbody>
+          
+                        <tr *ngFor=" let reserve of filteredRecord |  paginate: { itemsPerPage: 5, currentPage: p }; let i = index">
+                            <td>{{reserve.id}}</td>
+                            <td>{{reserve.userId}}</td>
+                            <td>{{reserve.bookId}}</td>
+                            <td>{{reserve.reservationDate}}</td>
+                            <td>{{reserve.cancelled}}</td>
+                            <td>{{reserve.active}}</td>
+                            
+                            <td>
+                                <button class="btn btn-danger btn-sm" [routerLink]="['/librarian-dashboard/delete-reservation', reserve.id]">Cancel</button>
+                            </td>
+                          
+
+        </tbody>
+    </table>
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+
+    </div>
+</div>

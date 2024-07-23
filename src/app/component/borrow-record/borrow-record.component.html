@@ -1,0 +1,58 @@
+
+
+<div class="container mt-4">
+    
+    <div class="d-flex justify-content-between mb-3">
+        <h2>Borrow  Records</h2>
+        <input 
+            type="text" 
+            class="form-control mr-3" 
+            style="max-width: 300px;"
+            placeholder="Search borrow records..." 
+            [(ngModel)]="searchQuery"
+            (input)="filterBorrowRecord()"
+        />
+    </div>
+<div>
+   
+    <table class="table table-bordered table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th>ID</th>
+                <th>User Id</th>
+                <th>Book Id</th>
+                <th>Borrowed Date</th>
+                <th>Returned Date</th>
+                <th>Is Returned</th>
+                <th>Fine Amount</th>
+                <th>Is Fine Paid</th>
+                <th>Action</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+          
+                        <tr *ngFor="let borrow of filterRecord | paginate: { itemsPerPage: 5, currentPage: p }; let i = index">
+                            <td>{{borrow.id}}</td>
+                            <td>{{borrow.userId}}</td>
+                            <td>{{borrow.bookId}}</td>
+                            <td>{{borrow.borrowDate}}</td>
+                            <td>{{borrow.returnDate}}</td>
+                            <td>{{borrow.returned}}</td>
+                            <td>{{borrow.fineAmount}}</td>
+                            <td>{{borrow.finePaid}}</td>
+                            <td>
+                                <button class="btn btn-primary btn-sm" [routerLink]="['/librarian-dashboard/edit-borrow',borrow.id]">Edit</button>
+                            </td>
+
+                          
+
+        </tbody>
+    </table>
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+
+    </div>
+</div>
+
+
+
