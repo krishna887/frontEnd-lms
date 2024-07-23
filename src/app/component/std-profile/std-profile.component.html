@@ -1,0 +1,51 @@
+<div class="student-profile">
+    <h2>Student Profile</h2>
+    
+    <div class="profile-grid">
+      <div class="profile-details">
+        <h3>Personal Details</h3>
+        <p><strong>Name:</strong> {{ userDetails?.username}}</p>
+        <p><strong>Email:</strong> {{ userDetails?.email }}</p>
+        <p><strong>User Id:</strong> {{userDetails?.id}}</p>
+      </div>
+      
+      <div class="borrow-records">
+        <h3>Borrowed Books</h3>
+        <ul>
+          <li *ngFor="let book of borrowRecord">
+            <p><strong>Book Id:</strong> {{ book.bookId }}</p>
+            <p><strong>Borrowed Date:</strong> {{ book.borrowDate |date }}</p>
+            <p><strong>Returned Date:</strong> {{ book.returnDate|date }}</p>
+
+            
+          </li>
+  
+        </ul>
+      </div>
+      
+      <div class="reserve-records">
+        <h3>Reserved Books</h3>
+        <ul>
+          <li *ngFor="let book of reserveRecord">
+            <p><strong>Book Id:</strong> {{ book.bookId }}</p>
+            <p><strong>reservationDate:</strong> {{ book.reservationDate}}</p>
+          </li>
+
+        </ul>
+      </div>
+      
+      <div class="fine-records">
+        <h3>Fines</h3>
+        <ul>
+          <li *ngFor="let fine of borrowRecord">
+            <p><strong>Is Fine Paid:</strong> {{ fine.finePaid }}</p>
+            <p><strong>Amount:</strong> {{ fine.fineAmount }}</p>
+          </li>
+
+            
+        </ul>
+        <button routerLink="/student-dashboard/pay-fine">Pay Fines</button>
+      </div>
+    </div>
+  </div>
+  

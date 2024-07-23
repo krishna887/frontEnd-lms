@@ -1,0 +1,27 @@
+<div class="cart-container">
+  <div class="search-bar">
+    <input type="text" placeholder="Search books..." [(ngModel)]="searchQuery" (input)="filterBooks()" />
+  </div>
+  
+  <div *ngIf="filteredBooks.length > 0; else emptyCart" class="book-grid">
+    <div *ngFor="let book of filteredBooks" class="book-details">
+      <h3>{{ book.title }}</h3>
+      <div class="book-info">
+        <span>ID: {{ book.id }}</span>
+        <span>Author: {{ book.author }}</span>
+        <span>Copies Available: {{ book.copiesAvailable }}</span>
+        <span>ISBN: {{ book.isbn }}</span>
+      </div>
+      
+      <div class="buttons">
+        <button *ngIf="book.available" (click)="borrowBook(book)" class="borrow-button">Borrow</button>
+        <button class="return-button" (click)="returnBook(book)">Return</button>
+        <button *ngIf="book.copiesAvailable == 0" (click)="reserveBook(book)" class="reserve-button">Reserve</button>
+      </div>
+    </div>
+  </div>
+  
+  <ng-template #emptyCart>
+    <p class="empty-cart">Your cart is empty.</p>
+  </ng-template>
+</div>

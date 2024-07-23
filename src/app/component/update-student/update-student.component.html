@@ -3,7 +3,7 @@
     <form [formGroup]="studentUpdateForm">
 
       <div class="form-group">
-        <label for="email">email:</label>
+        <label for="email">Email:</label>
         <input type="text" class="form-control" name="email" placeholder="Enter your email"  formControlName="email">
         <div class="text-danger">
           @if(studentUpdateForm.controls['email'].touched && studentUpdateForm.controls['email'].errors?.['required']){
@@ -16,7 +16,7 @@
        </div>
 
       <div class="form-group">
-        <label for="username">username:</label>
+        <label for="username">User Name:</label>
         <input type="text" class="form-control" name="username" placeholder="Enter your username" formControlName="username" >
         <div class="text-danger">
           @if(studentUpdateForm.controls['username'].touched && studentUpdateForm.controls['username'].errors?.['required']){
@@ -25,7 +25,7 @@
         </div>
         </div>
         <div class="form-group">
-          <label for="name">name:</label>
+          <label for="name">Name:</label>
           <input type="text" class="form-control" name="username" placeholder="Enter your Full Name" formControlName="name" >
           <div class="text-danger">
             @if(studentUpdateForm.controls['name'].touched && studentUpdateForm.controls['name'].errors?.['required']){
@@ -35,7 +35,7 @@
           </div>
      
         <div class="form-group">
-            <label for="password">password:</label>
+            <label for="password">Password:</label>
             <input type="password" class="form-control" name="password" placeholder="Enter your password" formControlName="password" >
             <div class="text-danger">
               @if(studentUpdateForm.controls['password'].touched && studentUpdateForm.controls['password'].errors?.['required']){
@@ -63,7 +63,7 @@
           
             
       <div class="form-group">
-        <label for="contactDetails">contactDetails:</label>
+        <label for="contactDetails">Contact Details:</label>
         <input type="text" class="form-control" name="contactDetails" placeholder="Enter your password" formControlName="contactDetails" >
         <div class="text-danger">
           @if(studentUpdateForm.controls['contactDetails'].touched && studentUpdateForm.controls['contactDetails'].errors?.['required']){
