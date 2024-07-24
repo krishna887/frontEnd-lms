@@ -43,11 +43,9 @@
             <p><strong>Is Fine Paid:</strong> {{ fine.finePaid }}</p>
             <p><strong> Book Id:</strong> {{ fine.bookId }}</p>
             <p><strong>Amount:</strong> {{ fine.fineAmount }}</p>
-            <button *ngIf="fine.fineAmount>0  && !fine.finePaid" (click)="payfine()">Pay Fines</button>
+            <button *ngIf="fine.fineAmount>0  && !fine.finePaid" (click)="payfine(fine.id)">Pay Fines</button>
           </li>
-          
-            
-        </ul>
+          </ul>
       </div>
     </div>
   </div>
