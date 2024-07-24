@@ -29,19 +29,19 @@ export interface Book {
   title: string;
 }
 export interface BorrowRecord{
-    id:Number;
-    userId:Number;
-    bookId:Number;
+    id:number;
+    userId:number;
+    bookId:number;
     borrowDate :Date;
     returnDate:Date;
     returned:boolean ;
-    fineAmount:Number;
+    fineAmount:number;
     finePaid:boolean;
 }
 export interface ReserveRecord{
-  id:Number
-  userId:Number
-  bookId:Number
+  id:number
+  userId:number
+  bookId:number
   reservationDate:Date;
   cancelled:boolean
   active:boolean

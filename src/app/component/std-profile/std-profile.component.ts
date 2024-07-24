@@ -70,6 +70,15 @@ export class StdProfileComponent implements OnInit {
       }
     );
   }
+  payfine(id:number) {
+   
+    this.http.post(`http://localhost:8080/api/pay/fine?borrowId=${id}`, {}).subscribe((res:any) => {
+      console.log(res.message);
+      alert(res.message)
+    }, error => {
+      console.error('Error paying fine', error);
+    });
+  }
 }
 
 export interface UserDetail {

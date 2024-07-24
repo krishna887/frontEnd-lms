@@ -28,7 +28,9 @@
         <ul>
           <li *ngFor="let book of reserveRecord">
             <p><strong>Book Id:</strong> {{ book.bookId }}</p>
-            <p><strong>reservationDate:</strong> {{ book.reservationDate}}</p>
+            <p><strong>Reservation Date:</strong> {{ book.reservationDate}}</p>
+            <p><strong>Is Cancelled:</strong> {{ book.cancelled}}</p>
+
           </li>
 
         </ul>
@@ -39,12 +41,11 @@
         <ul>
           <li *ngFor="let fine of borrowRecord">
             <p><strong>Is Fine Paid:</strong> {{ fine.finePaid }}</p>
+            <p><strong> Book Id:</strong> {{ fine.bookId }}</p>
             <p><strong>Amount:</strong> {{ fine.fineAmount }}</p>
+            <button *ngIf="fine.fineAmount>0  && !fine.finePaid" (click)="payfine(fine.id)">Pay Fines</button>
           </li>
-
-            
-        </ul>
-        <button routerLink="/student-dashboard/pay-fine">Pay Fines</button>
+          </ul>
       </div>
     </div>
   </div>
