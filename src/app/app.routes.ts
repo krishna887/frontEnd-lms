@@ -15,7 +15,6 @@ import { DeleteReservationsComponent } from './component/delete-reservations/del
 import { BorrowEditComponent } from './component/borrow-edit/borrow-edit.component';
 import { EditFineComponent } from './component/edit-fine/edit-fine.component';
 import { StdProfileComponent } from './component/std-profile/std-profile.component';
-import { FineComponent } from './component/fine/fine.component';
 import { LibraryComponent } from './component/library/library.component';
 
 export const routes: Routes = [
@@ -51,10 +50,9 @@ export const routes: Routes = [
   ]},
    { path: 'student-dashboard', component: StudentDashboardComponent,
           children: [
-              {path:'',component:UpdateStudentComponent},
+              {path:'',component:StdProfileComponent},
               { path: 'update-student', component: UpdateStudentComponent },
               {path:'profile' , component:StdProfileComponent},
-              {path:'pay-fine', component:FineComponent},
               {path:'library', component:LibraryComponent}
              
             ],

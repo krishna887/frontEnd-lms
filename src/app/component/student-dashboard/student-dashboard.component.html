@@ -1,20 +1,18 @@
 <div class="container">
-    <header class="header">
-      <h1>Library Management System</h1>
-    </header>
-    <nav class="menu">
-      <ul>
-        <li><a routerLink="profile" routerLinkActive="active">Profile</a></li>
-        <li><a routerLink="update-student" routerLinkActive="active">Update Student</a></li>
-        <li><a routerLink="library" routerLinkActive="active">Library </a></li>
-      </ul>
-    </nav>
-    <main class="content">
-      <router-outlet></router-outlet>
-      <!-- Content for each section will go here -->
-    </main>
-   
-      <app-footer></app-footer>
-   
-  </div>
-  
+  <header class="header">
+    <h1>Library Management System</h1>
+  </header>
+  <nav class="menu">
+    <ul>
+      <li><a routerLink="profile" routerLinkActive="active">Profile</a></li>
+      <li><a routerLink="update-student" routerLinkActive="active">Update Student</a></li>
+      <li><a routerLink="library" routerLinkActive="active">Library</a></li>
+    </ul>
+    <button class="logout-button" (click)="logout()" >Logout</button>
+  </nav>
+  <main class="content">
+    <router-outlet></router-outlet>
+    <!-- Content for each section will go here -->
+  </main>
+  <app-footer></app-footer>
+</div>

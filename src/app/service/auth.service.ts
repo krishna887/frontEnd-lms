@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import jwt_decode, { jwtDecode } from 'jwt-decode';
 import { BehaviorSubject, Observable } from 'rxjs';
@@ -13,7 +14,8 @@ export class AuthService {
   getToken(): string | null {
     return localStorage.getItem('token');
   }
-  constructor() { 
+  constructor(private http:HttpClient ) {
+    
     this.loadUserData()
   }
 
@@ -30,7 +32,7 @@ export class AuthService {
       this.userSubject.next(userData);
     }
   }
-  
+ 
 }
 export interface JwtPayload {
   sub:string
