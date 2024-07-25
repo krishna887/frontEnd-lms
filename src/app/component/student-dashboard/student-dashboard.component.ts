@@ -22,7 +22,7 @@ export class StudentDashboardComponent {
     localStorage.clear();
 
     // Redirect to landing page
-    this.router.navigate(['/home']); // Adjust the route to your actual landing page
+    this.router.navigate(['/home']); // Adjust the route to your actual home page
   }
 
 }

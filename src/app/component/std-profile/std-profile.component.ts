@@ -12,7 +12,7 @@ import { BorrowRecord, ReserveRecord } from '../../service/book.service';
   standalone: true,
   imports: [CommonModule, FormsModule, ReactiveFormsModule, RouterLink],
   templateUrl: './std-profile.component.html',
-  styleUrls: ['./std-profile.component.css'] // Corrected 'styleUrl' to 'styleUrls'
+  styleUrls: ['./std-profile.component.css'] 
 })
 export class StdProfileComponent implements OnInit {
   userDetails: UserDetail | null = null;

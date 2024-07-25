@@ -1,6 +1,8 @@
 import { HttpClient,HttpResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { routes } from '../../app.routes';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register-student',
@@ -10,7 +12,8 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
   styleUrl: './register-student.component.css'
 })
 export class RegisterStudentComponent {
-  constructor(private http:HttpClient){
+  constructor(private http:HttpClient,
+    private router:Router){
 
   }
   studentUpdateForm:FormGroup= new FormGroup({
@@ -39,6 +42,8 @@ export class RegisterStudentComponent {
         console.log(error)
       }
     });
+    this.router.navigate(['/librarian-dashboard/books-record']);
+
   }
 
 }
