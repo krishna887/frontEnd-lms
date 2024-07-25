@@ -27,10 +27,10 @@ export class BorrowEditComponent implements OnInit {
       userId: new FormControl(''),
       bookId: new FormControl(''),
       borrowDate:new FormControl(''),
-      returnedDate: new FormControl(''),
-      isReturned: new FormControl(false),
+      returnDate: new FormControl(''),
+      returned: new FormControl(false),
       fineAmount:new FormControl(''),
-      isFinePaid: new FormControl(false)
+      finePaid: new FormControl(false)
       
     });
   }
@@ -42,10 +42,10 @@ export class BorrowEditComponent implements OnInit {
       userId: new FormControl('', [Validators.required]),
       bookId: new FormControl('', [Validators.required]),
       borrowDate: new FormControl('', [Validators.required]),
-      returnedDate: new FormControl('', [Validators.required]),
-      isReturned: new FormControl(false, [Validators.required]),
+      returnDate: new FormControl('', [Validators.required]),
+      returned: new FormControl(false, [Validators.required]),
       fineAmount: new FormControl(' ',Validators.required),
-      isFinePaid: new FormControl(false, [Validators.required]),
+      finePaid: new FormControl(false, [Validators.required]),
 
     });
 
@@ -59,7 +59,7 @@ export class BorrowEditComponent implements OnInit {
           userId:record.userId,
           bookId:record.bookId,
           borrowDate:record.borrowDate,
-          returnedDate:record.returnedDate,
+          returnDate:record.returnDate,
           returned:record.returned,
           fineAmount:record.fineAmount,
           finePaid:record.finePaid
@@ -70,7 +70,8 @@ export class BorrowEditComponent implements OnInit {
   }
   onSubmit() {
     
-      const bookData = this.formRecord.getRawValue(); // This includes the disabled 'id' field
+  const bookData = this.formRecord.getRawValue(); 
+      console.log(bookData)// This includes the disabled 'id' field
       this.http.put(`http://localhost:8080/api/update/borrow_record/${bookData.id}`, bookData).subscribe(
         response => {
           console.log('Borrow Record updated successfully', response);

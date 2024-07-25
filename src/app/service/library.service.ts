@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, map } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -26,5 +26,9 @@ export class LibraryService {
     return this.http.post<any>(`${this.apiUrl}/reserve`, null, {
       params: { userId: userId, bookId: bookId }
     });
+  }
+
+  calculateFine(id:number){
+    return this.http.get(`http://localhost:8080/api/calculate/fine?borrowId=${id}`).pipe(map((res:any)=>res.data))
   }
 }

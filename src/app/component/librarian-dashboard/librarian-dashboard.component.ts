@@ -12,21 +12,8 @@ import { AuthService } from '../../service/auth.service';
 })
 export class LibrarianDashboardComponent {
   constructor(private router:Router,private authService:AuthService){}
-  // navigateToRegisterStudent(){
-  //   this.router.navigateByUrl('/register-student')
-  // }
-  navigateToBookRecord(){
-
-  }
-  navigateToBorrowRecord(){
-
-  }
-navigateToReservationRecord(){
-
-}
-navigationToFineRecord(){
-
-}
+  
+ 
 
 logout(){
   
@@ -35,7 +22,7 @@ logout(){
     localStorage.clear();
 
     // Redirect to landing page
-    this.router.navigate(['/home']); // Adjust the route to your actual landing page
+    this.router.navigate(['/home']);
   }
 }
 

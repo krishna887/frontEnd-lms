@@ -16,6 +16,7 @@ import { BorrowEditComponent } from './component/borrow-edit/borrow-edit.compone
 import { EditFineComponent } from './component/edit-fine/edit-fine.component';
 import { StdProfileComponent } from './component/std-profile/std-profile.component';
 import { LibraryComponent } from './component/library/library.component';
+import { authGuard } from './service/guard/auth.guard';
 
 export const routes: Routes = [
     {
@@ -29,7 +30,7 @@ export const routes: Routes = [
         component: LoginComponent
     },
     
-    {path:'librarian-dashboard',component:LibrarianDashboardComponent,
+    {path:'librarian-dashboard',component:LibrarianDashboardComponent,canActivate:[authGuard],
   children:[
     {path:'',component:BookRecordComponent},
     { path: 'register-student', component: RegisterStudentComponent },
@@ -48,7 +49,7 @@ export const routes: Routes = [
    
 
   ]},
-   { path: 'student-dashboard', component: StudentDashboardComponent,
+   { path: 'student-dashboard', component: StudentDashboardComponent,canActivate:[authGuard],
           children: [
               {path:'',component:StdProfileComponent},
               { path: 'update-student', component: UpdateStudentComponent },

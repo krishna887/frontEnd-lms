@@ -4,9 +4,9 @@
     <div class="profile-grid">
       <div class="profile-details">
         <h3>Personal Details</h3>
+        <p><strong>User Id:</strong> {{userDetails?.id}}</p>
         <p><strong>Name:</strong> {{ userDetails?.username}}</p>
         <p><strong>Email:</strong> {{ userDetails?.email }}</p>
-        <p><strong>User Id:</strong> {{userDetails?.id}}</p>
       </div>
       
       <div class="borrow-records">
@@ -40,8 +40,8 @@
         <h3>Fines</h3>
         <ul>
           <li *ngFor="let fine of borrowRecord">
-            <p><strong>Is Fine Paid:</strong> {{ fine.finePaid }}</p>
             <p><strong> Book Id:</strong> {{ fine.bookId }}</p>
+            <p><strong>Is Fine Paid:</strong> {{ fine.finePaid }}</p>
             <p><strong>Amount:</strong> {{ fine.fineAmount }}</p>
             <button *ngIf="fine.fineAmount>0  && !fine.finePaid" (click)="payfine(fine.id)">Pay Fines</button>
           </li>

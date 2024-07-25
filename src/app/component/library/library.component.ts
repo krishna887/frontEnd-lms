@@ -95,22 +95,24 @@ export class LibraryComponent implements OnInit {
           console.log('Book borrowed successfully', response);
         },
         error => {
-          console.error('Error borrowing book', error);
+        console.error('Error borrowing book', error);
         }
-      );
-    } else {
+        );
+      } else {
       console.error('User ID is null, cannot borrow book.');
     }
   }
 
   returnBook(book: any): void {
     if (this.userId !== null) {
+      
       this.libraryService.returnBook(this.userId, book.id).subscribe(
         response => {
           alert("book Return Success!")
           console.log('Book returned successfully', response);
         },
         error => {
+          alert("Error Returning book")
           console.error('Error returning book', error);
         }
       );

@@ -8,11 +8,11 @@ import {map, Observable} from 'rxjs';
 export class BookService {
 http= inject(HttpClient) // this is one way to inject http
   constructor() { }
-  getBooks():Observable<Book[]>{
-   return this.http.get<any>('http://localhost:8080/api/books/find-all').pipe( map(response=>response.data))
-  }
+ getBooks():Observable<Book[]>{
+     return this.http.get<any>('http://localhost:8080/api/books/find-all').pipe( map(response=>response.data))
+    }
   getBorrowRecords():Observable<BorrowRecord[]>{
-    return this.http.get<any>('http://localhost:8080/api/all_borrow_records').pipe( map(response=>response.data))
+    return this.http.get('http://localhost:8080/api/all_borrow_records').pipe( map((response:any)=>response.data))
    }
    getReserveRecords():Observable<ReserveRecord[]>{
     return this.http.get<any>('http://localhost:8080/api/all_reservations').pipe( map(response=>response.data))
