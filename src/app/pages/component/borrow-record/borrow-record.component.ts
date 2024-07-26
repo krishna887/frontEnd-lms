@@ -2,9 +2,10 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
-import { BookService, BorrowRecord } from '../../service/book.service';
 import { HttpClient } from '@angular/common/http';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { BorrowRecord } from '../../../core/model/interceptor/BorrowRecord';
+import { BookService } from '../../../core/service/book.service';
 
 @Component({
   selector: 'app-borrow-record',

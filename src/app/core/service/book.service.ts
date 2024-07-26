@@ -1,6 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import {map, Observable} from 'rxjs';
+import { Book } from '../model/interceptor/Book';
+import { BorrowRecord } from '../model/interceptor/BorrowRecord';
+import { ReserveRecord } from '../model/interceptor/ReserveRecord';
 
 @Injectable({
   providedIn: 'root'
@@ -20,31 +23,6 @@ http= inject(HttpClient) // this is one way to inject http
 
 }
 
-export interface Book {
-  id:number
-  author: string;
-  copiesAvailable: number;
-  available: boolean;
-  isbn: string;
-  title: string;
-}
-export interface BorrowRecord{
-    id:number;
-    userId:number;
-    bookId:number;
-    borrowDate :Date;
-    returnDate:Date;
-    returned:boolean ;
-    fineAmount:number;
-    finePaid:boolean;
-}
-export interface ReserveRecord{
-  id:number
-  userId:number
-  bookId:number
-  reservationDate:Date;
-  cancelled:boolean
-  active:boolean
-}
+
   
   

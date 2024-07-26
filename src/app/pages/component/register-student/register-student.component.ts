@@ -1,7 +1,6 @@
 import { HttpClient,HttpResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { routes } from '../../app.routes';
 import { Router } from '@angular/router';
 
 @Component({

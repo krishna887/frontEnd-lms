@@ -2,10 +2,12 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
-import { AuthService, JwtPayload } from '../../service/auth.service';
 import { HttpClient } from '@angular/common/http';
 import { Observable, map, switchMap, forkJoin } from 'rxjs';
-import { BorrowRecord, ReserveRecord } from '../../service/book.service';
+import { AuthService, JwtPayload } from '../../../core/service/auth.service';
+import { BorrowRecord } from '../../../core/model/interceptor/BorrowRecord';
+import { ReserveRecord } from '../../../core/model/interceptor/ReserveRecord';
+import { UserDetail } from '../../../core/model/interceptor/UserDetails';
 
 @Component({
   selector: 'app-std-profile',
@@ -81,11 +83,4 @@ export class StdProfileComponent implements OnInit {
   }
 }
 
-export interface UserDetail {
-  id: number;
-  username: string;
-  email: string;
-  name: string;
-  contactDetails: string;
-  role: string;
-}
+

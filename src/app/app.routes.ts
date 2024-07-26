@@ -1,22 +1,22 @@
 import { Routes } from '@angular/router';
-import { LoginComponent } from './component/login/login.component';
-import { LandingComponent } from './component/landing/landing.component';
-import { LibrarianDashboardComponent } from './component/librarian-dashboard/librarian-dashboard.component';
-import { StudentDashboardComponent } from './component/student-dashboard/student-dashboard.component';
-import { BookRecordComponent } from './component/book-record/book-record.component';
-import { RegisterStudentComponent } from './component/register-student/register-student.component';
-import { BorrowRecordComponent } from './component/borrow-record/borrow-record.component';
-import { FineRecordComponent } from './component/fine-record/fine-record.component';
-import { UpdateStudentComponent } from './component/update-student/update-student.component';
-import { ReservationRecordComponent } from './component/reservation-record/reservation-record.component';
-import { AddBookComponent } from './component/add-book/add-book.component';
-import { UpdateBookComponent } from './component/update-book/update-book.component';
-import { DeleteReservationsComponent } from './component/delete-reservations/delete-reservations.component';
-import { BorrowEditComponent } from './component/borrow-edit/borrow-edit.component';
-import { EditFineComponent } from './component/edit-fine/edit-fine.component';
-import { StdProfileComponent } from './component/std-profile/std-profile.component';
-import { LibraryComponent } from './component/library/library.component';
-import { authGuard } from './service/guard/auth.guard';
+import { authGuard } from './core/guard/auth.guard';
+import { LandingComponent } from './pages/component/landing/landing.component';
+import { LoginComponent } from './pages/component/login/login.component';
+import { LibrarianDashboardComponent } from './pages/component/librarian-dashboard/librarian-dashboard.component';
+import { BookRecordComponent } from './pages/component/book-record/book-record.component';
+import { RegisterStudentComponent } from './pages/component/register-student/register-student.component';
+import { AddBookComponent } from './pages/component/add-book/add-book.component';
+import { UpdateBookComponent } from './pages/component/update-book/update-book.component';
+import { DeleteReservationsComponent } from './pages/component/delete-reservations/delete-reservations.component';
+import { BorrowRecordComponent } from './pages/component/borrow-record/borrow-record.component';
+import { ReservationRecordComponent } from './pages/component/reservation-record/reservation-record.component';
+import { FineRecordComponent } from './pages/component/fine-record/fine-record.component';
+import { UpdateStudentComponent } from './pages/component/update-student/update-student.component';
+import { BorrowEditComponent } from './pages/component/borrow-edit/borrow-edit.component';
+import { EditFineComponent } from './pages/component/edit-fine/edit-fine.component';
+import { StudentDashboardComponent } from './pages/component/student-dashboard/student-dashboard.component';
+import { StdProfileComponent } from './pages/component/std-profile/std-profile.component';
+import { LibraryComponent } from './pages/component/library/library.component';
 
 export const routes: Routes = [
     {
@@ -41,8 +41,6 @@ export const routes: Routes = [
     { path: 'borrow-record', component: BorrowRecordComponent },
     { path: 'reservation-record', component: ReservationRecordComponent },
     { path: 'fine-record', component: FineRecordComponent },
-    { path: 'student-dashboard', component: StudentDashboardComponent},
-    { path: 'update-student', component: UpdateStudentComponent },
     {path:'edit-borrow/:id', component:BorrowEditComponent},
     {path:'edit-fine/:id', component:EditFineComponent}
 

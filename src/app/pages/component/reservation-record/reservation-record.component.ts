@@ -1,9 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { BookService, ReserveRecord } from '../../service/book.service';
 import { RouterLink } from '@angular/router';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { BookService } from '../../../core/service/book.service';
+import { ReserveRecord } from '../../../core/model/interceptor/ReserveRecord';
 
 @Component({
   selector: 'app-reservation-record',

@@ -1,9 +1,10 @@
 import { Component, OnInit, inject } from '@angular/core';
-import { BookService,Book } from '../../service/book.service';
 import {CommonModule, JsonPipe} from "@angular/common";
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { Book } from '../../../core/model/interceptor/Book';
+import { BookService } from '../../../core/service/book.service';
 
 @Component({
   selector: 'app-book-record',
