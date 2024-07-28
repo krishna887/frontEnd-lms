@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FooterComponent } from '../footer/footer.component';
 import { Route, Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
-import { AuthService } from '../../service/auth.service';
+import { AuthService } from '../../../core/service/auth.service';
 
 @Component({
   selector: 'app-librarian-dashboard',

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FooterComponent } from '../footer/footer.component';
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
-import { AuthService } from '../../service/auth.service';
+import { AuthService } from '../../../core/service/auth.service';
 
 @Component({
   selector: 'app-student-dashboard',

@@ -1,9 +1,10 @@
 import { Component, OnInit, inject } from '@angular/core';
-import { BookService,Book } from '../../service/book.service';
 import {CommonModule, JsonPipe} from "@angular/common";
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { Book } from '../../../core/model/interceptor/Book';
+import { BookService } from '../../../core/service/book.service';
 
 @Component({
   selector: 'app-book-record',
@@ -15,7 +16,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 export class BookRecordComponent implements OnInit {
   books:Book[]=[]
   filteredBooks:Book[] = []
-  searchQuery = ''
+  searchQuery =''
   p: number = 1  // Current page number
 
 
@@ -25,7 +26,8 @@ export class BookRecordComponent implements OnInit {
 
 
   }
-  constructor(private bookservice:BookService, private router:Router){
+  constructor(private bookservice:BookService, private router:Router,
+    ){
 
   }
   fetchBooks():void{
@@ -41,6 +43,8 @@ export class BookRecordComponent implements OnInit {
       book.author.toLowerCase().includes(this.searchQuery.toLowerCase()) ||
       book.isbn.toLowerCase().includes(this.searchQuery.toLowerCase())
     );
+    this.p = 1; // Reset to first page
+
     console.log('Filtered Books:', this.filteredBooks);
   }
 

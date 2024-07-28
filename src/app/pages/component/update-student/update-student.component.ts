@@ -1,28 +1,36 @@
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Component, inject } from '@angular/core';
-import { AbstractControl, FormControl, FormGroup, ReactiveFormsModule, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
+import { AbstractControl, FormControl, FormGroup, FormsModule, ReactiveFormsModule, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
+import { StrongPasswordRegx } from '../../../core/constants/password_regix';
+import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-update-student',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule,CommonModule,FormsModule],
   templateUrl: './update-student.component.html',
   styleUrl: './update-student.component.css'
 })
 export class UpdateStudentComponent {
   http=inject(HttpClient)
-  constructor(){}
+  constructor(private router:Router){}
   studentUpdateForm:FormGroup=new FormGroup(
     {
     email:new FormControl('',[Validators.required, Validators.email]),
     username:new FormControl('',[Validators.required]),
-    password:new FormControl('',[Validators.required,Validators.minLength(8)]),
+    // password:new FormControl('',[Validators.required,Validators.minLength(8)]),
+    password: new FormControl<string>('', {
+      validators: [Validators.required, Validators.pattern(StrongPasswordRegx)],
+    }),
     cPassword:new FormControl('',[Validators.required]),
     name:new FormControl('',[Validators.required]),
     contactDetails:new FormControl('',Validators.required),
     },[confirmPasswordValidator("password","cPassword")]
     )
-   
+    get passwordFormField() {
+      return this.studentUpdateForm.get('password');
+    }
 
     update() {
 
@@ -44,6 +52,8 @@ export class UpdateStudentComponent {
          console.log(error)
        }
      });
+     this.router.navigate(['/student-dashboard/profile']);
+
    }
   }
 

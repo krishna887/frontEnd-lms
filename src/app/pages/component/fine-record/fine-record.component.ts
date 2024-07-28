@@ -3,9 +3,10 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { NgxPaginationModule } from 'ngx-pagination';
-import { BookService, BorrowRecord } from '../../service/book.service';
 import { RouterLink } from '@angular/router';
 import { map } from 'rxjs';
+import { BorrowRecord } from '../../../core/model/interceptor/BorrowRecord';
+import { BookService } from '../../../core/service/book.service';
 @Component({
   selector: 'app-fine-record',
   standalone: true,

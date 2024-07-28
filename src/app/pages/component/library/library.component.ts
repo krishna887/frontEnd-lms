@@ -1,13 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { Book, BookService, BorrowRecord } from '../../service/book.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { LibraryService } from '../../service/library.service';
-import { AuthService, JwtPayload } from '../../service/auth.service';
-import { HttpClient } from '@angular/common/http';
-import { UserDetail } from '../std-profile/std-profile.component';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { map, switchMap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
+import { Book } from '../../../core/model/interceptor/Book';
+import { BorrowRecord } from '../../../core/model/interceptor/BorrowRecord';
+import { UserDetail } from '../../../core/model/interceptor/UserDetails';
+import { BookRecordComponent } from '../book-record/book-record.component';
+import { LibraryService } from '../../../core/service/library.service';
+import { AuthService, JwtPayload } from '../../../core/service/auth.service';
+import { BookService } from '../../../core/service/book.service';
 
 @Component({
   selector: 'app-library',
@@ -134,6 +137,8 @@ export class LibraryComponent implements OnInit {
       );
     } else {
       console.error('User ID is null, cannot reserve book.');
-    }
+    } 
   }
+
+
 }
