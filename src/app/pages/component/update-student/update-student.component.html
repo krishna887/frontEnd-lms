@@ -38,15 +38,27 @@
             <label for="password">Password:</label>
             <input type="password" class="form-control" name="password" placeholder="Enter your password" formControlName="password" >
             <div class="text-danger">
-              @if(studentUpdateForm.controls['password'].touched && studentUpdateForm.controls['password'].errors?.['required']){
+              @if(studentUpdateForm.controls['password'].touched && studentUpdateForm.controls['password'].errors?.['required'] ){
                 <span>This is required </span>
               }
-              @else if(studentUpdateForm.controls['password'].touched && studentUpdateForm.controls['password'].errors?.['minlength'])
-              {
-                <span>Minimum password length should be of 8 characters </span>
-              }
-            </div>
+              </div>
+             <div class="text-red-400 text-sm" *ngIf="passwordFormField?.dirty">
+              <span class="block" [ngClass]="{'text-primary': passwordFormField?.value?.match('^(?=.*[A-Z])')}">At least oneu ppercase
+                                      letter.</span>
+              <span class="block" [ngClass]="{'text-primary': passwordFormField?.value?.match('(?=.*[a-z])')}">At least one lowercase
+                                      letter.</span>
+              <span class="block" [ngClass]="{'text-primary': passwordFormField?.value?.match('(.*[0-9].*)')}">At least one
+                                      digit.</span>
+              <span class="block" [ngClass]="{'text-primary': passwordFormField?.value?.match('(?=.*[!@#$%^&*])')}">At least one
+                                      special
+                                      character.</span>
+              <span class="block" [ngClass]="{'text-primary': passwordFormField?.value?.match('.{8,}')}">At least 8 characters
+                                      long.</span>
+           </div>
+          
+
         </div>
+      
             <div class="form-group">
                 <label for="password">Conform Password:</label>
                 <input type="password" class="form-control" name="conform Password" placeholder="Conform your password" formControlName="cPassword" >

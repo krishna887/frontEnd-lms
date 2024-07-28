@@ -50,12 +50,15 @@ export const routes: Routes = [
    { path: 'student-dashboard', component: StudentDashboardComponent,canActivate:[authGuard],
           children: [
               {path:'',component:StdProfileComponent},
-              { path: 'update-student', component: UpdateStudentComponent },
+              { path:'update-student', component: UpdateStudentComponent },
               {path:'profile' , component:StdProfileComponent},
               {path:'library', component:LibraryComponent}
              
             ],
+          },
+          {
+            path:'**', component:LandingComponent
           }
           
-
+               
   ];

@@ -137,7 +137,7 @@ export class LibraryComponent implements OnInit {
       );
     } else {
       console.error('User ID is null, cannot reserve book.');
-    }
+    } 
   }
 
 

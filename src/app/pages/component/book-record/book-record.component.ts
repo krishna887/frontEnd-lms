@@ -16,7 +16,7 @@ import { BookService } from '../../../core/service/book.service';
 export class BookRecordComponent implements OnInit {
   books:Book[]=[]
   filteredBooks:Book[] = []
-  searchQuery = ''
+  searchQuery =''
   p: number = 1  // Current page number
 
 
@@ -26,7 +26,8 @@ export class BookRecordComponent implements OnInit {
 
 
   }
-  constructor(private bookservice:BookService, private router:Router){
+  constructor(private bookservice:BookService, private router:Router,
+    ){
 
   }
   fetchBooks():void{
@@ -42,6 +43,8 @@ export class BookRecordComponent implements OnInit {
       book.author.toLowerCase().includes(this.searchQuery.toLowerCase()) ||
       book.isbn.toLowerCase().includes(this.searchQuery.toLowerCase())
     );
+    this.p = 1; // Reset to first page
+
     console.log('Filtered Books:', this.filteredBooks);
   }
 

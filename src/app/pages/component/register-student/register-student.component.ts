@@ -1,3 +1,4 @@
+import { JsonPipe } from '@angular/common';
 import { HttpClient,HttpResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
@@ -6,7 +7,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-register-student',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule,JsonPipe],
   templateUrl: './register-student.component.html',
   styleUrl: './register-student.component.css'
 })
@@ -30,14 +31,21 @@ export class RegisterStudentComponent {
 
       next: (response: HttpResponse<any>) => {
         if(response.body.status){
-          alert("Student Register Successful and Email is Send to Respective Mail")
+          alert("Student Register Successful and Mail was sent to Respected Email ")
         }
         
         console.log(response)
         
       },
       error: (error) => {
-        alert(error.message)
+        let errorMessage=''
+        if(error.status==400){
+          errorMessage="User name already taken!"
+        }
+        else{
+          errorMessage='An Error Occured while upadating student'
+        }
+        alert(errorMessage)
         console.log(error)
       }
     });
