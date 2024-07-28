@@ -44,6 +44,7 @@ export class BorrowRecordComponent implements OnInit {
           return bookIdMatch || userIdMatch || borrowDateMatch || returnDateMatch;
         });
         console.log(this.filterRecord)
+        this.p=1
       }
       formatDate(date: Date): string {
         if (!(date instanceof Date)) {

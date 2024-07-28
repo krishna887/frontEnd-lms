@@ -42,6 +42,7 @@ export class FineRecordComponent implements OnInit {
       const fineMatch = record.fineAmount.toString().includes(this.searchQuery);
       return bookIdMatch || userIdMatch || fineMatch;
     });
+    this.p=1
   }
   calculate(id:number){
     this.http.get<any>(`http://localhost:8080/api/calculate/fine?borrowId=${id}`).pipe(map(res=>res.data))
