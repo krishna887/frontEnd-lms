@@ -35,7 +35,7 @@ export class RegisterStudentComponent {
         }
         
         console.log(response)
-        
+        this.router.navigate(['/librarian-dashboard/books-record']);
       },
       error: (error) => {
         let errorMessage=''
@@ -49,7 +49,7 @@ export class RegisterStudentComponent {
         console.log(error)
       }
     });
-    this.router.navigate(['/librarian-dashboard/books-record']);
+    
 
   }
 

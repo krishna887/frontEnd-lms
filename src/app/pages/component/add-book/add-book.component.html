@@ -23,7 +23,7 @@
       </div>
       <div class="form-group">
         <label for="isbn">Isbn:</label>
-        <input type="number" class="form-control" name="isbn" placeholder="Enter Book's Isbn Number" formControlName="isbn" >
+        <input type="text" class="form-control" name="isbn" placeholder="Enter Book's Isbn Number" formControlName="isbn" >
         <div class="text-danger">
           @if(bookForm.controls['isbn'].touched && bookForm.controls['isbn'].errors?.['required']){
             <span>This is required </span>

@@ -64,10 +64,12 @@ export class UpdateBookComponent implements OnInit {
       this.http.put(`http://localhost:8080/api/books/update/${bookData.id}`, bookData).subscribe(
         response => {
           console.log('Book updated successfully', response);
+          alert("Book Updated Sucessful !")
           // Handle success response, such as navigating back to the book list or showing a success message
         },
         error => {
           console.error('Error updating book', error);
+          alert("Error in Updating Book ")
           // Handle error response, such as showing an error message
         }
       )
