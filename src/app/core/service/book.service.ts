@@ -9,7 +9,7 @@ import { ReserveRecord } from '../model/interceptor/ReserveRecord';
   providedIn: 'root'
 })
 export class BookService {
-http= inject(HttpClient) // this is one way to inject http
+http= inject(HttpClient) // this is one way to inject http another way is in constructor
   constructor() { }
  getBooks():Observable<Book[]>{
      return this.http.get<any>('http://localhost:8080/api/books/find-all').pipe( map(response=>response.data))

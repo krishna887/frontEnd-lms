@@ -65,16 +65,14 @@ onSubmit() {
    
     const borrowData = this.formRecord.getRawValue();
   
-    console.log(borrowData) // This includes the disabled 'id' field
+    console.log(borrowData) 
     this.http.put(`http://localhost:8080/api/update/borrow_record/${borrowData.id}`, borrowData).subscribe(
       response => {
         console.log('Borrow Record updated successfully', response);
         console.log(borrowData)
-        // Handle success response, such as navigating back to the book list or showing a success message
       },
       error => {
         console.error('Error updating Borrow record', error);
-        // Handle error response, such as showing an error message
       }
     )
     this.router.navigate(['/librarian-dashboard/fine-record'])

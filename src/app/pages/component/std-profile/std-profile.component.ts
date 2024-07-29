@@ -23,10 +23,10 @@ export class StdProfileComponent implements OnInit {
 
   user: JwtPayload | null = null;
 
-  constructor(private auth: AuthService, private http: HttpClient) {}
+  constructor(private authService: AuthService, private http: HttpClient) {}
 
   ngOnInit(): void {
-    this.auth.user$.subscribe(user => {
+    this.authService.user$.subscribe(user => {
       this.user = user;
       this.getUserDetailsAndRecords();
     });

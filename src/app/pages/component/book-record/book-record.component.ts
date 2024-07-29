@@ -43,7 +43,7 @@ export class BookRecordComponent implements OnInit {
       book.author.toLowerCase().includes(this.searchQuery.toLowerCase()) ||
       book.isbn.toLowerCase().includes(this.searchQuery.toLowerCase())
     );
-    this.p = 1; // Reset to first page
+    this.p = 1; // go to first page
 
     console.log('Filtered Books:', this.filteredBooks);
   }

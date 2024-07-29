@@ -7,7 +7,6 @@ import { Observable } from 'rxjs';
 import { Book } from '../../../core/model/interceptor/Book';
 import { BorrowRecord } from '../../../core/model/interceptor/BorrowRecord';
 import { UserDetail } from '../../../core/model/interceptor/UserDetails';
-import { BookRecordComponent } from '../book-record/book-record.component';
 import { LibraryService } from '../../../core/service/library.service';
 import { AuthService, JwtPayload } from '../../../core/service/auth.service';
 import { BookService } from '../../../core/service/book.service';
