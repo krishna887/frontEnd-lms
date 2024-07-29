@@ -6,7 +6,7 @@ import { Observable, map } from 'rxjs';
   providedIn: 'root'
 })
 export class LibraryService {
-  private apiUrl = 'http://localhost:8080/api'; // Base URL for your API
+  private apiUrl = 'http://localhost:8080/api'; // Base URL 
 
 
   constructor(private http:HttpClient) { }

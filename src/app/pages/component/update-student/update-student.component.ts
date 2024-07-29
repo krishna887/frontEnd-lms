@@ -19,7 +19,6 @@ export class UpdateStudentComponent {
     {
     email:new FormControl('',[Validators.required, Validators.email]),
     username:new FormControl('',[Validators.required]),
-    // password:new FormControl('',[Validators.required,Validators.minLength(8)]),
     password: new FormControl<string>('', {
       validators: [Validators.required, Validators.pattern(StrongPasswordRegx)],
     }),
