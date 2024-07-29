@@ -2,6 +2,7 @@ import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
+import { Login } from '../../../core/model/class/Login';
 
 @Component({
   selector: 'app-login',
@@ -51,15 +52,5 @@ export class LoginComponent implements OnInit {
   }
 
 
-}
-
-export class Login {
-  username: string;
-  password: string;
-
-  constructor() {
-    this.username = '';
-    this.password = '';
-  }
 }
 
