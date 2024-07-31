@@ -1,27 +1,38 @@
 <div class="container">
-	<div class="screen">
-		<div class="screen__content">
-			<form class="login">
-				<div class="login__field">
-					<i class="login__icon fas fa-user"></i>
-					<input type="text" [(ngModel)]="loginObj.username" class="login__input" placeholder="User name / Email" name="email">
-				</div>
-				<div class="login__field">
-					<i class="login__icon fas fa-lock"></i>
-					<input type="password" [(ngModel)]="loginObj.password" class="login__input" placeholder="Password" name="password">
-				</div>
-				<button class="button login__submit" (click)="onLogin()">
-					<span class="button__text">Log In Now</span>
-					<i class="button__icon fas fa-chevron-right"></i>
-				</button>				
-			</form>
-		
-		</div>
-		<div class="screen__background">
-			<span class="screen__background__shape screen__background__shape4"></span>
-			<span class="screen__background__shape screen__background__shape3"></span>		
-			<span class="screen__background__shape screen__background__shape2"></span>
-			<span class="screen__background__shape screen__background__shape1"></span>
-		</div>		
-	</div>
+    <div class="screen">
+        <div class="screen__content">
+            <form class="login" #loginForm="ngForm" (ngSubmit)="onLogin()">
+                <div class="login__field" [ngClass]="{'invalid': !username.valid && username.touched}">
+                    <i class="login__icon fas fa-user"></i>
+                    <input type="text" [(ngModel)]="loginObj.username" 
+                           required class="login__input" placeholder="User name" 
+                           name="username" #username="ngModel" 
+                           pattern="^[a-zA-Z0-9_]{3,15}$">
+                    <div *ngIf="!username.valid && username.touched" class="error">
+                        Username must be 3-15 characters long and contain only letters, numbers, and underscores.
+                    </div>
+                </div>
+                <div class="login__field" [ngClass]="{'invalid': !password.valid && password.touched}">
+                    <i class="login__icon fas fa-lock"></i>
+                    <input type="password" [(ngModel)]="loginObj.password" 
+                           required class="login__input" placeholder="Password" 
+                           name="password" #password="ngModel" 
+                           pattern="^(?=[^A-Z]*[A-Z])(?=[^a-z]*[a-z])(?=\D*\d).{8,}$">
+                    <div *ngIf="!password.valid && password.touched" class="error">
+                        Password must be at least 8 characters long and contain atleast one UpperCase,One LowerCase One Special Symbol and One Number.
+                    </div>
+                </div>
+                <button class="button login__submit" [disabled]="!loginForm.valid">
+                    <span class="button__text">Log In</span>
+                    <i class="button__icon fas fa-chevron-right"></i>
+                </button>
+            </form>
+        </div>
+        <div class="screen__background">
+            <span class="screen__background__shape screen__background__shape4"></span>
+            <span class="screen__background__shape screen__background__shape3"></span>
+            <span class="screen__background__shape screen__background__shape2"></span>
+            <span class="screen__background__shape screen__background__shape1"></span>
+        </div>
+    </div>
 </div>

@@ -2,11 +2,7 @@
   <h2 class="mb-4">Update Book from Library</h2>
 <form [formGroup]="bookForm" (ngSubmit)="onSubmit()">
 
-  <div class="form-group">
-    <label for="isbn">Id:</label>
-    <input type="text" class="form-control" formControlName="id" [disabled]="true">
-    <!-- Remove frontend validation messages -->
-  </div>
+
 
     <div class="form-group">
       <label for="title">Title:</label>
@@ -32,13 +28,7 @@
       </div>
     </div>
   
-    <div class="form-group">
-      <label for="isAvailable">Is Available:</label>
-      <input type="checkbox" formControlName="available">
-      <div *ngIf="bookForm.controls['available'].touched && bookForm.controls['available'].invalid" class="text-danger">
-        <div *ngIf="bookForm.controls['available'].errors?.['required']">This is required</div>
-      </div>
-    </div>
+   
   
     <div class="form-group">
       <label for="copiesAvailable">Copies Available:</label>

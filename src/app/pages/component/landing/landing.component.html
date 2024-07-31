@@ -2,11 +2,8 @@
 <header>
     <div class="title">Library Management System</div>
     <div class="login-container">
-        <button class="login-button" routerLink="/login">Login</button>
-        <div class="dropdown-content">
-            <a (click)="navigateToLogin('librarian')">Login as Librarian</a>
-            <a (click)="navigateToLogin('student')">Login as Student</a>
-        </div>
+        <button class="login-button" (click)="navigateToLogin()">Login</button>
+       
     </div>
 </header>
 <main>

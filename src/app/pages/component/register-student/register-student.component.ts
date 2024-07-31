@@ -3,21 +3,23 @@ import { HttpClient,HttpResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-register-student',
   standalone: true,
   imports: [ReactiveFormsModule,JsonPipe],
   templateUrl: './register-student.component.html',
-  styleUrl: './register-student.component.css'
+  styleUrl: './register-student.component.css',
+  providers:[ToastrService]
 })
 export class RegisterStudentComponent {
-  constructor(private http:HttpClient,
+  constructor(private http:HttpClient,private toaster:ToastrService,
     private router:Router){
 
   }
   studentUpdateForm:FormGroup= new FormGroup({
-    email:new FormControl('',[Validators.required, Validators.email]),
+    email:new FormControl('',[Validators.required, Validators.email,Validators.pattern(/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/)]),
     username:new FormControl('',[Validators.required]),
     contactDetails:new FormControl('',Validators.required)
 
@@ -31,7 +33,7 @@ export class RegisterStudentComponent {
 
       next: (response: HttpResponse<any>) => {
         if(response.body.status){
-          alert("Student Register Successful and Mail was sent to Respected Email ")
+          this.toaster.show("Student Register Successful and Mail was sent to Respected Email ")
         }
         
         console.log(response)
@@ -43,9 +45,9 @@ export class RegisterStudentComponent {
           errorMessage="User name already taken!"
         }
         else{
-          errorMessage='An Error Occured while upadating student'
+          errorMessage='An Error Occured while registering student'
         }
-        alert(errorMessage)
+        this.toaster.show(errorMessage)
         console.log(error)
       }
     });
