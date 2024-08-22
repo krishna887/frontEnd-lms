@@ -6,7 +6,7 @@ import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-spinnner',
   standalone: true,
-  imports: [CommonModule,],
+  imports: [CommonModule],
   templateUrl: './spinnner.component.html',
   styleUrl: './spinnner.component.css',
   encapsulation:ViewEncapsulation.ShadowDom

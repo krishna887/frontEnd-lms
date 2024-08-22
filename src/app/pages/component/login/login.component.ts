@@ -15,7 +15,7 @@ import { Toast, ToastrService } from 'ngx-toastr';
   styleUrl: './login.component.css',
   providers : [ ToastrService ]
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent  {
   role: string='';
   loginObj: Login;
   user:JwtPayload | null= null
@@ -26,11 +26,7 @@ export class LoginComponent implements OnInit {
     this.loginObj = new Login();
   }
 
-  ngOnInit() {
-    this.route.queryParams.subscribe(params => {
-      this.role = params['role'];
-    });
-  }
+ 
 
   onLogin() {
     this.http.post('http://localhost:8080/librarian/login', this.loginObj, { observe: 'response' }).subscribe({

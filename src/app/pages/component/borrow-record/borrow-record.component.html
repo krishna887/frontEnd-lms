@@ -18,12 +18,11 @@
     <table class="table table-bordered table-striped">
         <thead class="thead-dark">
             <tr>
-                <th>ID</th>
-                <th>User Id</th>
-                <th>Book Id</th>
+                
+                <th>User Name</th>
+                <th>Book Name</th>
                 <th>Borrowed Date</th>
                 <th>Returned Date</th>
-                <th>Is Returned</th>
                 <th>Fine Amount</th>
                 <th>Is Fine Paid</th>
                 <th>Action</th>
@@ -33,12 +32,11 @@
         <tbody>
           
                         <tr *ngFor="let borrow of filterRecord | paginate: { itemsPerPage: 5, currentPage: p }; let i = index">
-                            <td>{{borrow.id}}</td>
-                            <td>{{borrow.userId}}</td>
-                            <td>{{borrow.bookId}}</td>
+                            
+                            <td>{{ userMap[borrow.userId] || 'Loading...' }}</td>
+                            <td>{{ bookMap[borrow.bookId] || 'Loading...' }}</td>
                             <td>{{borrow.borrowDate}}</td>
                             <td>{{borrow.returnDate}}</td>
-                            <td>{{borrow.returned}}</td>
                             <td>{{borrow.fineAmount}}</td>
                             <td>{{borrow.finePaid}}</td>
                             <td>

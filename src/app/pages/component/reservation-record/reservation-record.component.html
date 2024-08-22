@@ -16,11 +16,10 @@
     <table class="table table-bordered table-striped">
         <thead class="thead-dark">
             <tr>
-                 <th>Id</th>
-                <th>User Id</th>
-                <th>Book Id</th>
+                
+                <th>User Name</th>
+                <th>Book Name</th>
                 <th>Reservation Date</th>
-                <th>Is Cancelled</th>
                 <th>Is Active</th> 
                 <th>Action </th>               
             </tr>
@@ -28,11 +27,9 @@
         <tbody>
           
                         <tr *ngFor=" let reserve of filteredRecord |  paginate: { itemsPerPage: 5, currentPage: p }; let i = index">
-                            <td>{{reserve.id}}</td>
-                            <td>{{reserve.userId}}</td>
-                            <td>{{reserve.bookId}}</td>
+                            <td>{{ userMap[reserve.userId] || 'Loading...' }}</td>
+                            <td>{{ bookMap[reserve.bookId] || 'Loading...' }}</td>
                             <td>{{reserve.reservationDate}}</td>
-                            <td>{{reserve.cancelled}}</td>
                             <td>{{reserve.active}}</td>
                             
                             <td>

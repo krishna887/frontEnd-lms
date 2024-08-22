@@ -5,6 +5,7 @@ import { RouterLink } from '@angular/router';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { BookService } from '../../../core/service/book.service';
 import { ReserveRecord } from '../../../core/model/interceptor/ReserveRecord';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-reservation-record',
@@ -17,8 +18,10 @@ export class ReservationRecordComponent implements OnInit {
   ngOnInit(): void {
    this.fetchReserveRecord()
   }
-  constructor(private bookService:BookService){}
+  constructor(private bookService:BookService,private http:HttpClient){}
   reserveRecord:ReserveRecord[]=[]
+  bookMap: { [id: number]: string } = {};
+  userMap: { [id: number]: string } = {};
   filteredRecord:ReserveRecord[]=[]
   searchQuery=''
   p:number=1
@@ -27,11 +30,28 @@ export class ReservationRecordComponent implements OnInit {
     this.bookService.getReserveRecords().subscribe((data:ReserveRecord[])=>{
       this.reserveRecord= data
     this.filteredRecord=this.reserveRecord
-    console.log(this.reserveRecord)
+
+      // Fetch book and user details for each record
+      this.reserveRecord.forEach(record => {
+        this.getBookRecord(record.bookId);
+        this.getUserDetails(record.userId);
+      });
     })
+  }
+  getBookRecord(id: number): void {
+    this.http.get<any>(`http://localhost:8080/api/books/findBookById/${id}`).subscribe(response => {
+      const book = response.data;
+      this.bookMap[id] = book.title; 
+      this.updateFilterRecord();
+    });
+  }
 
-    
-
+  getUserDetails(id: number): void {
+    this.http.get<any>(`http://localhost:8080/student/getUserDetailsById/${id}`).subscribe(response => {
+      const user = response.data;
+      this.userMap[id] = user.username; // Assuming username is in the response as `username`
+      this.updateFilterRecord();
+    });
   }
   formatDate(date: Date): string {
     if (!(date instanceof Date)) {
@@ -53,6 +73,11 @@ export class ReservationRecordComponent implements OnInit {
       return bookIdMatch || userIdMatch || reservationDateMatch 
     });
     console.log(this.filteredRecord)
+  }
+
+  updateFilterRecord(): void {
+    // Update the filterRecord to ensure the changes in book and user maps are reflected
+    this.filteredRecord = [...this.reserveRecord];
   }
 
 }
