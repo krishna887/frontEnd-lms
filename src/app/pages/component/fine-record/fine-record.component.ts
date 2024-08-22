@@ -18,6 +18,8 @@ export class FineRecordComponent implements OnInit {
 
   borrowRecord: BorrowRecord[] = [];
   filterRecord: BorrowRecord[] = [];
+  bookMap: { [id: number]: string } = {};
+  userMap: { [id: number]: string } = {};
   searchQuery = '';
   p: number = 1;
   
@@ -31,7 +33,28 @@ export class FineRecordComponent implements OnInit {
     this.bookService.getBorrowRecords().subscribe((data: BorrowRecord[]) => {
       this.borrowRecord = data;
       this.filterRecord = this.borrowRecord;
-     
+      // Fetch book and user details for each record
+      this.borrowRecord.forEach(record => {
+        this.getBookRecord(record.bookId);
+        this.getUserDetails(record.userId);
+      });
+    });
+  }
+
+
+  getBookRecord(id: number): void {
+    this.http.get<any>(`http://localhost:8080/api/books/findBookById/${id}`).subscribe(response => {
+      const book = response.data;
+      this.bookMap[id] = book.title; 
+      this.updateFilterRecord();
+    });
+  }
+
+  getUserDetails(id: number): void {
+    this.http.get<any>(`http://localhost:8080/student/getUserDetailsById/${id}`).subscribe(response => {
+      const user = response.data;
+      this.userMap[id] = user.username; // Assuming username is in the response as `username`
+      this.updateFilterRecord();
     });
   }
 
@@ -51,5 +74,9 @@ export class FineRecordComponent implements OnInit {
     }else
     alert("fine calculate sucess and the fine amount is:"+ fine)
     })
+  }
+  updateFilterRecord(): void {
+    // Update the filterRecord to ensure the changes in book and user maps are reflected
+    this.filterRecord = [...this.borrowRecord];
   }
 }

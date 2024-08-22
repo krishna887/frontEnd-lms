@@ -12,8 +12,8 @@ import { Router, RouterModule } from '@angular/router';
 export class LandingComponent {
   constructor(private router: Router) {}
 
-  navigateToLogin(role: string) {
-    this.router.navigate(['/login'], { queryParams: { role } });
+  navigateToLogin() {
+    this.router.navigate(['/login']);
   }
 
 

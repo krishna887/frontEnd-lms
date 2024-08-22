@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { map } from 'rxjs';
 
 @Component({
@@ -18,7 +19,8 @@ export class UpdateBookComponent implements OnInit {
   constructor(
     private http: HttpClient,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private toaster:ToastrService
    
   ) {
     // Initialize bookForm with an empty form group
@@ -27,7 +29,6 @@ export class UpdateBookComponent implements OnInit {
       title: new FormControl(''),
       author: new FormControl(''),
       isbn: new FormControl(''),
-      isAvailable: new FormControl(false),
       copiesAvailable: new FormControl('')
     });
   }
@@ -39,8 +40,7 @@ export class UpdateBookComponent implements OnInit {
       title: new FormControl('', [Validators.required]),
       author: new FormControl('', [Validators.required]),
       isbn: new FormControl('', [Validators.required]),
-      available: new FormControl(false, [Validators.required]),
-      copiesAvailable: new FormControl('', [Validators.required]),
+      copiesAvailable: new FormControl('', [Validators.min(0)]),
     });
 
     this.http.get(`http://localhost:8080/api/books/findBookById/${bookId}`)
@@ -52,7 +52,6 @@ export class UpdateBookComponent implements OnInit {
           title: book.title,
           author: book.author,
           isbn: book.isbn,
-          available: book.available,
           copiesAvailable: book.copiesAvailable
         });
       }
@@ -64,11 +63,11 @@ export class UpdateBookComponent implements OnInit {
       this.http.put(`http://localhost:8080/api/books/update/${bookData.id}`, bookData).subscribe(
         response => {
           console.log('Book updated successfully', response);
-          alert("Book Updated Sucessful !")
+          this.toaster.show("Book Updated Sucessful !")
         },
         error => {
           console.error('Error updating book', error);
-          alert("Error in Updating Book ")
+          this.toaster.show("Error in Updating Book ")
         }
       )
       this.router.navigate(['/librarian-dashboard/books-record'])

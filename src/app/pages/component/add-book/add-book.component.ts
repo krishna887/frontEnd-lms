@@ -19,8 +19,7 @@ export class AddBookComponent {
     title:new FormControl('',[Validators.required]),
     author:new FormControl('',[Validators.required]),
     isbn:new FormControl('',[Validators.required]),
-    isAvailable: new FormControl(false, [Validators.required]),
-    copiesAvailable:new FormControl('',[Validators.required]),
+    copiesAvailable:new FormControl('',Validators.min(0)),
 
   },
     )

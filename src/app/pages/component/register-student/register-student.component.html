@@ -5,21 +5,21 @@
         <label for="email">Email:</label>
         <input type="text" class="form-control" name="email" placeholder="Enter your email"  formControlName="email">
         <div class="text-danger">
-          @if(studentUpdateForm.controls['email'].touched && studentUpdateForm.controls['email'].errors?.['required']){
-            <span>This is required </span>
+          @if(studentUpdateForm.controls['email'].touched && !studentUpdateForm.controls['email'].valid){
+            <span> Email format not valid</span>
           }
-          @else if(studentUpdateForm.controls['email'].touched && studentUpdateForm.controls['email'].errors?.['email']){
-            <span>Email format not valid </span>
-          }
+          
         </div>
        </div>
 
       <div class="form-group">
         <label for="username">User Name:</label>
-        <input type="text" class="form-control" name="username" placeholder="Enter your username" formControlName="username" >
+        <input type="text" class="form-control" name="username" placeholder="Enter your username" formControlName="username" pattern="^[a-zA-Z0-9_]{3,15}$" >
         <div class="text-danger">
-          @if(studentUpdateForm.controls['username'].touched && studentUpdateForm.controls['username'].errors?.['required']){
+      
+          @if(studentUpdateForm.controls['username'].touched && !studentUpdateForm.controls['username'].valid){
             <span>This is required </span>
+            Username must be 3-15 characters long and contain only letters, numbers, and underscores.
           }
         </div>
 
@@ -33,7 +33,7 @@
           }
         </div>
       </div>
-      <button type="submit" class="btn btn-primary" [disabled]="studentUpdateForm.controls['contactDetails'].errors?.['required']"  (click)="register()">Submit</button>
+      <button type="submit" class="btn btn-primary" [disabled]="!studentUpdateForm.valid"  (click)="register()">Submit</button>
     </form>
   </div>
   

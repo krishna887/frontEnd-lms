@@ -19,10 +19,9 @@
     <table class="table table-bordered table-striped">
         <thead class="thead-dark">
             <tr>
-                <th>ID</th>
+               
                 <th>Author</th>
                 <th>Copies Available</th>
-                <th>Is Available</th>
                 <th>ISBN</th>
                 <th>Title</th>
                 <th>Action</th>
@@ -30,10 +29,9 @@
         </thead>
         <tbody>
             <tr *ngFor="let book of filteredBooks | paginate: { itemsPerPage: 5, currentPage: p }; let i = index;">
-                <td>{{ book.id}}</td>
+                
                 <td>{{ book.author }}</td>
                 <td>{{ book.copiesAvailable }}</td>
-                <td>{{ book.available ? 'Yes' : 'No' }}</td>
                 <td>{{ book.isbn }}</td>
                 <td>{{ book.title }}</td>
                 <td>

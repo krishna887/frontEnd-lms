@@ -30,25 +30,19 @@
           }
         </div>
         </div>
-         <div class="form-group">
-    <label for="isAvailable">Is Available:</label>
-    <input type="checkbox" formControlName="isAvailable">
-    <div *ngIf="bookForm.controls['isAvailable'].touched && bookForm.controls['isAvailable'].invalid" class="text-danger">
-      <div *ngIf="bookForm.controls['isAvailable'].errors?.['required']">This is required</div>
-    </div>
-  </div>
+
    
       <div class="form-group">
           <label for="copiesAvailable">CopiesAvailable:</label>
-          <input type="number" class="form-control" name="copiesAvailable" placeholder="Enter Copies Available" formControlName="copiesAvailable" >
+          <input type="number" class="form-control" name="copiesAvailable" placeholder="Enter Copies Available" formControlName="copiesAvailable" min="0" pattern="^(0|\+?[1-9]\d*)$" >
           <div class="text-danger">
-            @if(bookForm.controls['copiesAvailable'].touched && bookForm.controls['copiesAvailable'].errors?.['required']){
-              <span>This is required </span>
+            @if(bookForm.controls['copiesAvailable'].touched && !bookForm.controls['copiesAvailable'].valid){
+              <span>This is required and should be positive number </span>
             }
           </div>
       </div>
         
-    <button type="submit" class="btn btn-primary" [disabled]="bookForm.controls['copiesAvailable'].errors?.['required']"  (click)="onSubmit()">Submit</button>
+    <button type="submit" class="btn btn-primary" [disabled]="!bookForm.valid"  (click)="onSubmit()">Submit</button>
   </form>
 </div>
 
